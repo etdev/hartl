@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   #Check if signed in on these pages (signed_in_user is a method defined in this file)
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   #Check if the user is correct, when on the edit page (i.e. you can't edit someone else's info)
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,  only: :destroy 
@@ -50,6 +50,20 @@ class UsersController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   #Auxiliary method called user_params that returns an appropriate init. hash for 

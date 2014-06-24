@@ -1,7 +1,12 @@
 Hartl::Application.routes.draw do
-  resources :users  #replaces get "users/new" 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy] #restrict b/c we don't need show or edit
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   #get "static_pages/home"
   #get "static_pages/help"
   #get "static_pages/about"
