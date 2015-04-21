@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   #Check if signed in on these pages (signed_in_user is a method defined in this file)
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   #Check if the user is correct, when on the edit page (i.e. you can't edit someone else's info)
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :admin_user,  only: :destroy 
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
@@ -37,19 +37,19 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
-  	@user = User.new(user_params)
-  	if @user.save
-  		#Handle a successful save
+    @user = User.new(user_params)
+    if @user.save
+      #Handle a successful save
       sign_in @user
-  		flash[:success] = "Welcome to the Sample App!"
-  		redirect_to @user
-  	else
-  		render 'new'
-  	end
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def following
@@ -69,19 +69,19 @@ class UsersController < ApplicationController
   #Auxiliary method called user_params that returns an appropriate init. hash for 
   #the User model.  You don't test this.
   private
-    def user_params
-    	params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 
-    #Before filters
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  #Before filters
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
 
 

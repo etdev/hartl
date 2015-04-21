@@ -15,8 +15,8 @@ describe Micropost do
 
   #First simple check to make sure a micropost can't have nil as its user_id
   describe "when user_id is not present" do
-  	before { @micropost.user_id = nil }
-  	it { should_not be_valid }
+    before { @micropost.user_id = nil }
+    it { should_not be_valid }
   end
 
   describe "with blank content" do
