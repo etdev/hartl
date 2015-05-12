@@ -1,4 +1,6 @@
 @import "bootstrap";
+$nav-height: 60px;
+$nav-offset-vert: ($nav-height - 40px) / 2;
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
@@ -12,20 +14,46 @@ $grayMediumLight: #eaeaea;
 /* universal */
 html {
   overflow-y: scroll;
+  background-image:
+      linear-gradient(
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.75)
+      ),
+      url(/assets/black-and-white-small.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
-
+  margin-top: 80px;
+  background-color: rgba(0,0,0,0);
+  color: #fff;
 }
 
 section {
   overflow: auto;
 }
 
+a {
+  color: #DDD;
+  &:hover {
+    color: #FFF;
+  }
+}
 textarea {
   resize: vertical;
 }
 
+.btn-primary {
+  background: rgba(0,0,0,0);
+  border: 2px solid #fff;
+  &:hover {
+    background: #FFF;
+    color: #000;
+  }
+}
 .center {
   text-align: center;
   h1 {
@@ -34,6 +62,8 @@ textarea {
 }
 
 .hero-unit {
+  margin-top: 150px;
+  height: 450px;
   background-color: rgba(0,0,0,0);
 }
 
@@ -50,12 +80,13 @@ h1 {
 }
 
 h2 {
+  margin-top: 20px;
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
+  color: #fff;
 }
 
 p {
@@ -65,6 +96,14 @@ p {
 
 
 /* header */
+
+.navbar, .navbar-inner {
+  height: $nav-height !important;
+}
+
+nav {
+  margin-top: $nav-offset-vert;
+}
 
 #logo {
   float: left;
@@ -87,12 +126,12 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  border-top: 1px solid $grayLight;
+  color: #fff;
   a {
-    color: $gray;
+    color: #ddd;
     &:hover {
-      color: $grayDarker;
+      color: #fff;
     }
   }
   small {
