@@ -1,6 +1,6 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
-$nav-height: 60px;
+$nav-height: 50px;
 $nav-offset-vert: ($nav-height - 40px) / 2;
 
 /* mixins, variables, etc. */
@@ -14,7 +14,14 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 html {
-  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  @include box_sizing;
+  overflow-y: hidden;
+  height: 100%;
   background-image:
       linear-gradient(
         rgba(0, 0, 0, 0.75),
@@ -25,15 +32,31 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-body {
-  background-color: rgba(0,0,0,0);
   color: #fff;
 }
 
+* {
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -100px;
+}
+.footer, .push {
+  height: 100px;
+}
+
+.main-content-center {
+  text-align: center;
+  h1 {
+    font-size: 3em;
+  }
+}
+
 section {
-  overflow: auto;
 }
 
 a {
@@ -49,21 +72,26 @@ textarea {
 .btn-primary {
   background: rgba(0,0,0,0);
   border: 2px solid #fff;
-  &:hover {
+  &:hover, &:active, &:focus {
     background: #FFF;
     color: #000;
   }
 }
+
 .center {
-  text-align: center;
+  text-align: center !important;
   h1 {
     margin-bottom: 10px;
   }
 }
 
 .hero-unit {
-  margin-top: 150px;
-  height: 450px;
+  padding: 25vh 0 0 !important;
+  background-color: rgba(0,0,0,0);
+}
+
+.hero-unit-short {
+  padding: 15vh 0 40vh !important;
   background-color: rgba(0,0,0,0);
 }
 
@@ -105,6 +133,7 @@ nav {
 }
 
 #logo {
+  padding-left: 5%;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -121,11 +150,11 @@ nav {
 }
 
 /* footer */
-
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
+  @include box_sizing;
+  padding-top: 6px;
   border-top: 1px solid $grayLight;
+  margin: auto;
   color: #fff;
   a {
     color: #ddd;
@@ -141,9 +170,14 @@ footer {
     list-style: none;
     li {
       float: left;
-      margin-left: 10px;
+      padding-left: 10px;
+      @include box_sizing;
     }
   }
+}
+
+.help-info {
+  text-align: center;
 }
 
 /* miscellaneous */
@@ -185,7 +219,6 @@ aside {
 }
 
 .stats {
-  overflow: auto;
   a {
     float: left;
     padding: 0 10px;
@@ -206,7 +239,6 @@ aside {
 }
 
 .user_avatars {
-  overflow: auto;
   margin-top: 10px;
   .gravatar{
     margin: 1px 1px;
@@ -244,7 +276,6 @@ input {
   list-style: none;
   margin: 0;
   li {
-    overflow: auto;
     padding: 10px 0;
     border-top: 1px solid $grayLighter;
     &:last-child {
@@ -285,20 +316,9 @@ aside {
   }
 }
 
-@media (max-width: 768px) {
+@media (screen and max-width: 768px) {
   .hero-unit {
-    margin-top: 0px;
+    padding: 10vh 0 0 !important;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
