@@ -153,8 +153,9 @@ nav {
 footer {
   @include box_sizing;
   padding-top: 6px;
-  border-top: 1px solid $grayLight;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin: auto;
+  position: fixed;
   color: #fff;
   a {
     color: #ddd;
@@ -277,9 +278,9 @@ input {
   margin: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
     }
   }
 }
@@ -309,7 +310,15 @@ input {
   margin-right: 10px;
 }
 
+.alert-success {
+  background-color: rgba(255, 255, 255, 0);
+  color: #FFF;
+  border-color: #282;
+  text-align: center;
+}
+
 aside {
+    margin-top: 60px;
   textarea {
     height: 100px;
     margin-bottom: 5px;
@@ -320,5 +329,16 @@ aside {
   .hero-unit {
     padding: 10vh 0 0 !important;
   }
+
+  footer {
+    position: relative;
+  }
+}
+
+@media (screen and min-width: 992px) {
+  body {
+    padding-top: 60px;
+  }
+
 }
 
