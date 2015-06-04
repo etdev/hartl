@@ -194,7 +194,6 @@ footer {
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -223,7 +222,6 @@ aside {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $grayLighter;
     color: gray;
     &:first-child{
       padding-left: 0;
@@ -289,11 +287,12 @@ input {
 
 .microposts {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 15px 0 0 0;
+  overflow: hidden;
 
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -342,3 +341,11 @@ aside {
 
 }
 
+.micropost-feed {
+  margin-top: 55px;
+}
+
+.micropost-main {
+  padding-left: 50px;
+  box-sizing: border-box;
+}
