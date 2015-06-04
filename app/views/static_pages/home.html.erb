@@ -1,7 +1,8 @@
   <% if signed_in? %>
     <div class="main-content">
-      <div class="row">
-        <aside class="span4">
+      <div class="row" >
+        <aside class="span4 user-info-left">
+          <h1 class="user-info-label">Compose New</h1>
           <section>
             <%= render 'shared/user_info' %>
           </section>
@@ -14,7 +15,7 @@
         </aside>
 
         <div class="span8 micropost-main">
-          <h3 class="micropost-feed">Micropost Feed</h3>
+          <h1 class="micropost-feed">Micropost Feed</h1>
           <%= render 'shared/feed' %>
         </div>
 
